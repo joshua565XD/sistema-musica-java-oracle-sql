@@ -8,11 +8,15 @@ package spooty;
  *
  * @author alane
  */
+import igu.Pantalla;
 import java.util.Scanner;
 import spooty.models.JLayerPlugin;
 
 public class SpootyApp {
     public static void main(String[] args) {
+        Pantalla panta = new Pantalla();
+        panta.setVisible(true);
+        panta.setLocationRelativeTo(null);
         // Crear una instancia del plugin de JLayer
         JLayerPlugin musicPlayer = new JLayerPlugin();
 
