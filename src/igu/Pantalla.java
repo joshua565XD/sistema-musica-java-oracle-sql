@@ -15,8 +15,6 @@ import spooty.models.JLayerPlugin;
 import spooty.views.PanelReproductor;
 import spooty.models.JLayerPlugin;
 
-
-
 /**
  *
  * @author recinos
@@ -218,10 +216,10 @@ JFileChooser fileChooser = new JFileChooser();
     }//GEN-LAST:event_agregarButtonActionPerformed
 
     private void pauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseButtonActionPerformed
-
-        if (musica != null) {
-        musica.pause(); // Llama al método de pausa en el PanelReproductor
-    }
+        System.out.println("Doy click pause");
+        
+        JLayerPlugin musicPlayer = new JLayerPlugin();
+        musicPlayer.stop();
     }//GEN-LAST:event_pauseButtonActionPerformed
 
     /**

@@ -47,6 +47,7 @@ public class PanelReproductor extends JPanel {
 
     public void pause() {
         isPaused = true;
+        System.out.println("Pause");
     }
 
     public void resume() {
