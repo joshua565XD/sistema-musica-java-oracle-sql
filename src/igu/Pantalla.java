@@ -193,7 +193,7 @@ public class Pantalla extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Por favor, seleccione un archivo primero.");
         return;
     }
-    PanelReproductor musica = new PanelReproductor();
+    musica = new PanelReproductor();
     musica.play(filePath);
     
     pantallaRep.removeAll(); // Limpiar cualquier componente anterior en el panel
@@ -217,9 +217,8 @@ JFileChooser fileChooser = new JFileChooser();
 
     private void pauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseButtonActionPerformed
         System.out.println("Doy click pause");
-        
-        JLayerPlugin musicPlayer = new JLayerPlugin();
-        musicPlayer.stop();
+
+        musica.stop();
     }//GEN-LAST:event_pauseButtonActionPerformed
 
     /**

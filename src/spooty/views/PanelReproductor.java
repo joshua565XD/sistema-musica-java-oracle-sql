@@ -58,18 +58,18 @@ public class PanelReproductor extends JPanel {
             }
         }
     }
-
+    
     public void stop() {
-        isStopped = true;
-        if (playerThread != null) {
-            playerThread.interrupt();
+ // Implementar la lógica de detener
+        if (player != null) {
+            player.close();
         }
-        try {
-            if (fileInputStream != null) {
+        if (fileInputStream != null) {
+            try {
                 fileInputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }
