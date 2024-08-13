@@ -8,41 +8,12 @@ package spooty;
  *
  * @author alane
  */
-import igu.Pantalla;
-import java.util.Scanner;
-import spooty.models.JLayerPlugin;
+import igu.FormCancion;
 
 public class SpootyApp {
     public static void main(String[] args) {
-        Pantalla panta = new Pantalla();
+        FormCancion panta = new FormCancion();
         panta.setVisible(true);
         panta.setLocationRelativeTo(null);
-        // Crear una instancia del plugin de JLayer
-        JLayerPlugin musicPlayer = new JLayerPlugin();
-
-        // Mensaje de bienvenida
-        System.out.println("Bienvenido a Spooty, el reproductor de música!");
-
-        // Solicitar al usuario la ruta del archivo MP3
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese la ruta del archivo MP3 que desea reproducir: ");
-        String filePath = scanner.nextLine();
-
-        // Reproducir el archivo MP3
-        musicPlayer.play(filePath);
-
-        // Mensaje de confirmación
-        System.out.println("Reproduciendo: " + filePath);
-
-        // Esperar que el usuario presione Enter para detener la reproducción
-        System.out.println("Presione Enter para detener la reproducción...");
-        scanner.nextLine();
-
-        // Detener la reproducción
-        musicPlayer.stop();
-        System.out.println("Reproducción detenida.");
-
-        // Cerrar el scanner
-        scanner.close();
     }
 }

@@ -3,11 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package spooty.views;
+import java.io.File;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.advanced.AdvancedPlayer;
 import java.io.FileInputStream;
 import java.io.IOException;
 import javax.swing.JPanel;
+import org.jaudiotagger.audio.AudioFile;
+import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.Tag;
+import spooty.models.Cancion;
 
 public class PanelReproductor extends JPanel {
     private AdvancedPlayer player;
@@ -16,6 +22,7 @@ public class PanelReproductor extends JPanel {
     private volatile boolean isPaused = false;
     private volatile boolean isStopped = false;
     private volatile long pausePosition = 0;
+    private float volumen = 0.5f;
 
     public void play(String filePath) {
         stop(); // Detiene la reproducción actual si existe
@@ -58,18 +65,44 @@ public class PanelReproductor extends JPanel {
             }
         }
     }
-
+    
     public void stop() {
-        isStopped = true;
-        if (playerThread != null) {
-            playerThread.interrupt();
+ // Implementar la lógica de detener
+        if (player != null) {
+            player.close();
         }
-        try {
-            if (fileInputStream != null) {
+        if (fileInputStream != null) {
+            try {
                 fileInputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
+    
+    // Método para obtener los metadatos
+    public Cancion obtenerMetadatos(String filePath) {
+        File selectedFile = new File(filePath);
+        String titulo = selectedFile.getName();
+        String artista = "Artista Desconocido";
+        String album = "Álbum Desconocido";
+        String duracion = "00:00";
+
+        try {
+            AudioFile audioFile = AudioFileIO.read(selectedFile);
+            Tag tag = audioFile.getTag();
+            artista = tag.getFirst(FieldKey.ARTIST);
+            album = tag.getFirst(FieldKey.ALBUM);
+            titulo = tag.getFirst(FieldKey.TITLE);
+            duracion = audioFile.getAudioHeader().getTrackLength() / 60 + ":" + audioFile.getAudioHeader().getTrackLength() % 60;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return new Cancion(titulo, artista, album, duracion, filePath);
+    }
+    public void setVolumen(double nuevoVolumen) {
+        volumen = (float) nuevoVolumen;
+    }
+    
 }
