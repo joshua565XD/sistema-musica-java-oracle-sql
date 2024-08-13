@@ -18,10 +18,12 @@ public class ListaReproduccion {
         imprimirPlaylist();
     }
 
+
     public void eliminarCancion(int index) {
         playlist.remove(index);
         imprimirPlaylist();
     }
+
 
     public ArrayList<Cancion> getPlaylist() {
         return playlist;
