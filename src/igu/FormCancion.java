@@ -4,6 +4,7 @@
  */
 package igu;
 
+import java.awt.BorderLayout;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -27,12 +28,17 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 import spooty.models.ListaReproduccion;
-
+import spooty.models.Usuario;
+import spooty.models.UsuarioSesion;
 
 
 /**
@@ -82,6 +88,7 @@ public class FormCancion extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jButton11 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -248,6 +255,13 @@ public class FormCancion extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Impact", 0, 12)); // NOI18N
         jLabel6.setText("PlayList");
 
+        jButton11.setText("Agregar cancion");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -291,7 +305,9 @@ public class FormCancion extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
+                        .addGap(13, 13, 13)
+                        .addComponent(jButton11)
+                        .addGap(41, 41, 41)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -310,44 +326,49 @@ public class FormCancion extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jButton4)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(nombreCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel3)
+                                            .addComponent(artisCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(albumCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel4))
+                                        .addGap(29, 29, 29)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel6)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(25, 25, 25)
+                                                .addComponent(jButton9))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jButton8)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jButton7)))))
+                                .addGap(41, 41, 41)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton4)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(nombreCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(artisCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(albumCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4))
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(25, 25, 25)
-                                        .addComponent(jButton9))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton7)))))
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton11)
+                                .addGap(59, 59, 59)))))
                 .addGap(13, 13, 13))
         );
 
@@ -417,54 +438,58 @@ public class FormCancion extends javax.swing.JFrame {
     //Add Button
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-    JFileChooser fileChooser = new JFileChooser();
+      JFileChooser fileChooser = new JFileChooser();
     fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("MP3 Files", "mp3"));
     int returnValue = fileChooser.showOpenDialog(null);
-    
+
     if (returnValue == JFileChooser.APPROVE_OPTION) {
         File selectedFile = fileChooser.getSelectedFile();
         String rutaArchivo = selectedFile.getAbsolutePath();
 
-        // Variables para almacenar la información de la canción
         String titulo = selectedFile.getName();
         String artista = artisCancion.getText();
         String album = albumCancion.getText();
-        
-        // Validar que los campos de artista y álbum no estén vacíos
-    if (artista.isEmpty() || album.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Por favor, complete la informacion de artista y album");
-        return; // Salir del método si algún campo está vacío
-    }
-        //agarra la duracion
+
+        if (artista.isEmpty() || album.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, complete la información de artista y álbum.");
+            return;
+        }
+
         String duracion = "00:00";
         try {
             AudioFile audioFile = AudioFileIO.read(selectedFile);
             Tag tag = audioFile.getTag();
-            
             if (tag != null) {
-                // Si el archivo tiene metadatos, los obtenemos
                 int duracionSegundos = audioFile.getAudioHeader().getTrackLength();
                 duracion = String.format("%02d:%02d", duracionSegundos / 60, duracionSegundos % 60);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "No se pudieron obtener los Datos. Se usaran valores predeterminados.");
+            JOptionPane.showMessageDialog(null, "No se pudieron obtener los datos. Se usarán valores predeterminados.");
         }
 
+        // Obtener el ID del usuario actual desde UsuarioSesion
+        Usuario usuarioActual = UsuarioSesion.getUsuarioActual();
+        if (usuarioActual == null) {
+            JOptionPane.showMessageDialog(null, "No hay un usuario logueado.");
+            return;
+        }
+        int usuarioId = usuarioActual.getId();  // Obtener el ID del usuario
+
         // Crear objeto Cancion
-        Cancion nuevaCancion = new Cancion(titulo, artista, album, duracion, rutaArchivo);
-        
-        // Agregar la canción a la lista de reproducción
-        listaReproduccion.agregarCancion(nuevaCancion);
-        
-     
-        // Añadir a la tabla
+        Cancion nuevaCancion = new Cancion(titulo, artista, album, duracion, rutaArchivo, usuarioId);
+
+        // Guardar la canción en la base de datos
+        nuevaCancion.guardar();
+
+        // Agregar a la tabla
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.addRow(new Object[]{titulo, artista, album, duracion, rutaArchivo});
-        JOptionPane.showMessageDialog(null, "CANCION "+ titulo + " AGREGADA" );
+        JOptionPane.showMessageDialog(null, "CANCION " + titulo + " AGREGADA");
     }
-             
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // pausa
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -785,6 +810,231 @@ JFileChooser fileChooser = new JFileChooser();
         }
     }
     }//GEN-LAST:event_jButton10ActionPerformed
+
+private void mostrarFormularioAgregar() {
+  // Crear el frame o ventana para el formulario
+    JFrame frame = new JFrame("Agregar Nueva Canción");
+    frame.setSize(400, 300);
+    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    frame.setLayout(new GridLayout(6, 2));
+
+    // Crear los campos del formulario
+    JLabel archivoLabel = new JLabel("Archivo MP3:");
+    JTextField archivoField = new JTextField();
+    archivoField.setEnabled(false);  // Campo bloqueado para el usuario, solo muestra la ruta del archivo
+
+    JButton archivoButton = new JButton("Seleccionar Archivo");
+
+    JLabel tituloLabel = new JLabel("Título:");
+    JTextField tituloField = new JTextField();
+    tituloField.setEnabled(false);  // Inicialmente bloqueado
+
+    JLabel artistaLabel = new JLabel("Artista:");
+    JTextField artistaField = new JTextField();
+    artistaField.setEnabled(false);  // Inicialmente bloqueado
+
+    JLabel albumLabel = new JLabel("Álbum:");
+    JTextField albumField = new JTextField();
+    albumField.setEnabled(false);  // Inicialmente bloqueado
+
+    JLabel duracionLabel = new JLabel("Duración:");
+    JTextField duracionField = new JTextField();
+    duracionField.setEnabled(false);  // Bloqueado permanentemente, se llena automáticamente
+
+    // Acción para el botón de selección de archivo
+    archivoButton.addActionListener(e -> {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("MP3 Files", "mp3"));
+        int returnValue = fileChooser.showOpenDialog(null);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            archivoField.setText(selectedFile.getAbsolutePath());
+
+            // Desbloquear los campos de título, artista y álbum
+            tituloField.setEnabled(true);
+            artistaField.setEnabled(true);
+            albumField.setEnabled(true);
+
+            // Obtener automáticamente el título de la canción del archivo seleccionado
+            tituloField.setText(selectedFile.getName());
+
+            // Intentar obtener la duración del archivo MP3
+            String duracion = "00:00";
+            try {
+                AudioFile audioFile = AudioFileIO.read(selectedFile);
+                Tag tag = audioFile.getTag();
+                if (tag != null) {
+                    int duracionSegundos = audioFile.getAudioHeader().getTrackLength();
+                    duracion = String.format("%02d:%02d", duracionSegundos / 60, duracionSegundos % 60);
+                }
+                duracionField.setText(duracion);  // Actualizar el campo de duración con la duración obtenida
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "No se pudieron obtener los datos. Se usarán valores predeterminados.");
+            }
+        }
+    });
+
+    // Botón para guardar la canción
+    JButton saveButton = new JButton("Guardar");
+    saveButton.setEnabled(false);  // Deshabilitado hasta que el archivo sea seleccionado
+    saveButton.addActionListener(e -> {
+        String titulo = tituloField.getText();
+        String artista = artistaField.getText();
+        String album = albumField.getText();
+        String duracion = duracionField.getText();
+        String rutaArchivo = archivoField.getText();
+
+        // Validar que los campos no estén vacíos
+        if (titulo.isEmpty() || artista.isEmpty() || album.isEmpty() || rutaArchivo.isEmpty()) {
+            JOptionPane.showMessageDialog(frame, "Por favor, complete todos los campos.");
+            return;
+        }
+
+        // Obtener el ID del usuario actual desde UsuarioSesion
+        Usuario usuarioActual = UsuarioSesion.getUsuarioActual();
+        if (usuarioActual == null) {
+            JOptionPane.showMessageDialog(null, "No hay un usuario logueado.");
+            return;
+        }
+        int usuarioId = usuarioActual.getId();  // Obtener el ID del usuario logueado
+
+        // Crear el objeto Cancion
+        Cancion nuevaCancion = new Cancion(titulo, artista, album, duracion, rutaArchivo, usuarioId);
+
+        // Guardar la canción en la base de datos
+        nuevaCancion.guardar();
+
+        // Mostrar mensaje de confirmación
+        JOptionPane.showMessageDialog(frame, "Canción agregada exitosamente.");
+
+        // Cerrar el formulario
+        frame.dispose();
+
+        // Aquí puedes agregar la canción a la tabla si ya tienes una tabla visible en la interfaz principal
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.addRow(new Object[]{titulo, artista, album, duracion, rutaArchivo});
+    });
+
+    // Añadir los componentes al frame
+    frame.add(archivoLabel);
+    frame.add(archivoField);
+    frame.add(archivoButton);
+
+    frame.add(tituloLabel);
+    frame.add(tituloField);
+
+    frame.add(artistaLabel);
+    frame.add(artistaField);
+
+    frame.add(albumLabel);
+    frame.add(albumField);
+
+    frame.add(duracionLabel);
+    frame.add(duracionField);
+
+    // Añadir el botón de guardar
+    frame.add(new JLabel());  // Espacio vacío para alinear
+    frame.add(saveButton);
+
+    // Mostrar el formulario
+    frame.setVisible(true);
+
+    // Habilitar el botón "Guardar" después de seleccionar el archivo
+    archivoButton.addActionListener(e -> saveButton.setEnabled(true));
+}
+
+    
+    // vista de canciones y agregar
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+     
+        
+          // Crear el frame o ventana principal para mostrar las canciones
+    JFrame frame = new JFrame("Gestión de Canciones");
+    frame.setSize(600, 400);
+    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    frame.setLayout(new BorderLayout());
+
+    // Obtener el ID del usuario logueado
+    
+        Usuario usuarioActual = UsuarioSesion.getUsuarioActual();
+        if (usuarioActual == null) {
+            JOptionPane.showMessageDialog(null, "No hay un usuario logueado.");
+            return;
+        }
+        int usuarioId = usuarioActual.getId();  // Obtener el ID del usuario
+    
+
+    // Obtener la lista de canciones del usuario logueado desde la base de datos
+    List<Cancion> canciones = Cancion.listarCancionesPorUsuario(usuarioId);
+
+    // Crear los datos para la tabla
+    String[] columnNames = {"ID", "Título", "Artista", "Álbum", "Duración"};
+    String[][] data = new String[canciones.size()][5];
+    
+    for (int i = 0; i < canciones.size(); i++) {
+        Cancion c = canciones.get(i);
+        data[i][0] = String.valueOf(c.getId());
+        data[i][1] = c.getTitulo();
+        data[i][2] = c.getArtista();
+        data[i][3] = c.getAlbum();
+        data[i][4] = c.getDuracion();
+    }
+
+    // Crear la tabla para mostrar las canciones
+    JTable table = new JTable(data, columnNames);
+    JScrollPane scrollPane = new JScrollPane(table);
+    frame.add(scrollPane, BorderLayout.CENTER);
+
+    // Crear el panel para los botones
+    JPanel buttonPanel = new JPanel();
+
+    // Botón para agregar una canción
+    JButton addButton = new JButton("Agregar Canción");
+    addButton.addActionListener(e -> {
+        // Aquí abres un formulario para agregar una canción
+         mostrarFormularioAgregar();
+    });
+    buttonPanel.add(addButton);
+
+    // Botón para modificar una canción
+    JButton modifyButton = new JButton("Modificar Canción");
+    modifyButton.addActionListener(e -> {
+        // Obtener la fila seleccionada
+        int selectedRow = table.getSelectedRow();
+        if (selectedRow >= 0) {
+            String titulo = (String) table.getValueAt(selectedRow, 1);
+            // Aquí abres un formulario para modificar la canción seleccionada
+            // mostrarFormularioModificar(titulo);
+        } else {
+            JOptionPane.showMessageDialog(frame, "Por favor selecciona una canción para modificar.");
+        }
+    });
+    buttonPanel.add(modifyButton);
+
+    // Botón para eliminar una canción
+    JButton deleteButton = new JButton("Eliminar Canción");
+    deleteButton.addActionListener(e -> {
+        int selectedRow = table.getSelectedRow();
+        if (selectedRow >= 0) {
+            String titulo = (String) table.getValueAt(selectedRow, 1);
+            Cancion.eliminar(titulo); // Llamar al método para eliminar la canción
+            JOptionPane.showMessageDialog(frame, "Canción eliminada exitosamente.");
+            // Aquí podrías actualizar la tabla para reflejar la eliminación
+        } else {
+            JOptionPane.showMessageDialog(frame, "Por favor selecciona una canción para eliminar.");
+        }
+    });
+    buttonPanel.add(deleteButton);
+
+    // Añadir el panel de botones al frame
+    frame.add(buttonPanel, BorderLayout.SOUTH);
+
+    // Mostrar la ventana
+    frame.setVisible(true);
+        
+    }//GEN-LAST:event_jButton11ActionPerformed
     
     
     /**
@@ -827,6 +1077,7 @@ JFileChooser fileChooser = new JFileChooser();
     private javax.swing.JTextField artisCancion;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

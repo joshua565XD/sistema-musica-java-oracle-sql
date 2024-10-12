@@ -25,6 +25,7 @@ public class PanelReproductor extends JPanel {
     private float volumen = 0.5f;
 
     public void play(String filePath) {
+        System.out.println("spooty.views.PanelReproductor.play()");
         stop(); // Detiene la reproducción actual si existe
 
         try {
@@ -99,7 +100,7 @@ public class PanelReproductor extends JPanel {
             e.printStackTrace();
         }
 
-        return new Cancion(titulo, artista, album, duracion, filePath);
+        return new Cancion(titulo, artista, album, duracion, filePath, 0);
     }
     public void setVolumen(double nuevoVolumen) {
         volumen = (float) nuevoVolumen;
