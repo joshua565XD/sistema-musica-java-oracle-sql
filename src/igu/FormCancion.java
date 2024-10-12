@@ -81,8 +81,6 @@ public class FormCancion extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -190,30 +188,6 @@ public class FormCancion extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar 32.png"))); // NOI18N
-        jButton7.setBorderPainted(false);
-        jButton7.setContentAreaFilled(false);
-        jButton7.setFocusPainted(false);
-        jButton7.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Eliminar negro 32.png"))); // NOI18N
-        jButton7.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Eliminar negro 32.png"))); // NOI18N
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar 32.png"))); // NOI18N
-        jButton8.setBorderPainted(false);
-        jButton8.setContentAreaFilled(false);
-        jButton8.setFocusPainted(false);
-        jButton8.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar negro 32.png"))); // NOI18N
-        jButton8.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar negro 32.png"))); // NOI18N
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar 32.png"))); // NOI18N
         jButton9.setBorder(null);
         jButton9.setBorderPainted(false);
@@ -314,16 +288,11 @@ public class FormCancion extends javax.swing.JFrame {
                                         .addGap(6, 6, 6)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel6)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel7))))
-                                .addGap(23, 23, 23)
+                                .addGap(77, 77, 77)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(15, 15, 15))
         );
@@ -349,10 +318,7 @@ public class FormCancion extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton8)
-                            .addComponent(jButton7))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -360,8 +326,7 @@ public class FormCancion extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton9)
-                        .addGap(16, 16, 16)))
+                        .addComponent(jButton9)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
@@ -617,7 +582,7 @@ public class FormCancion extends javax.swing.JFrame {
         //tabla general de agregar canciones
         int selectedRow = jTable1.getSelectedRow();
         if (selectedRow != -1) {
-            String filePath = (String) jTable1.getValueAt(selectedRow, 4);
+            String filePath = (String) jTable1.getValueAt(selectedRow, 5);
 
             if (filePath != null && !filePath.isEmpty()) {
                 if (musica != null) {
@@ -650,7 +615,7 @@ public class FormCancion extends javax.swing.JFrame {
         boolean encontrada = false;
 
         for (int i = 0; i < model.getRowCount(); i++) {
-            String titulo = (String) model.getValueAt(i, 0); // La primera columna es el título
+            String titulo = (String) model.getValueAt(i, 1); // La primera columna es el título
             if (titulo.equalsIgnoreCase(noCan)) {
                 // Selecciona la fila encontrada en la tabla
                 jTable1.setRowSelectionInterval(i, i);
@@ -674,7 +639,7 @@ public class FormCancion extends javax.swing.JFrame {
             if (selectedRow != -1) {
                 // Calcula la siguiente fila, circular al principio si es necesario
                 int nextRow = (selectedRow + 1) % jTable1.getRowCount();
-                String filePath = (String) jTable1.getValueAt(nextRow, 4);
+                String filePath = (String) jTable1.getValueAt(nextRow, 5);
 
                 if (filePath != null && !filePath.isEmpty()) {
                     if (musica != null) {
@@ -705,7 +670,7 @@ public class FormCancion extends javax.swing.JFrame {
 
             if (selectedRow != -1) {
                 int prevRow = (selectedRow - 1 + jTable1.getRowCount()) % jTable1.getRowCount(); // Circular hacia el final
-                String filePath = (String) jTable1.getValueAt(prevRow, 4);
+                String filePath = (String) jTable1.getValueAt(prevRow, 5);
 
                 if (filePath != null && !filePath.isEmpty()) {
                     if (musica != null) {
@@ -728,17 +693,6 @@ public class FormCancion extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton5ActionPerformed
-
-    //Delete button
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-// delete
-
-
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-
-    }//GEN-LAST:event_jButton8ActionPerformed
 
     //exportar
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -823,31 +777,31 @@ public class FormCancion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
- // Obtener el reporte de los usuarios
-    List<Object[]> reporteUsuarios = ReportesDAO.obtenerReporteUsuarios();
+        // Obtener el reporte de los usuarios
+        List<Object[]> reporteUsuarios = ReportesDAO.obtenerReporteUsuarios();
 
-    // Crear un nuevo JFrame para mostrar el reporte
-    JFrame frame = new JFrame("Reporte de Usuarios");
-    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    frame.setSize(600, 400);
+        // Crear un nuevo JFrame para mostrar el reporte
+        JFrame frame = new JFrame("Reporte de Usuarios");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(600, 400);
 
-    // Crear el modelo de la tabla
-    String[] columnNames = {"Nombre", "Total Canciones Subidas", "Total Listas Creadas"};
-    DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+        // Crear el modelo de la tabla
+        String[] columnNames = {"Nombre", "Total Canciones Subidas", "Total Listas Creadas"};
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
-    // Llenar el modelo con los datos del reporte
-    for (Object[] fila : reporteUsuarios) {
-        tableModel.addRow(fila);
-    }
+        // Llenar el modelo con los datos del reporte
+        for (Object[] fila : reporteUsuarios) {
+            tableModel.addRow(fila);
+        }
 
-    // Crear la tabla
-    JTable table = new JTable(tableModel);
-    JScrollPane scrollPane = new JScrollPane(table);
-    frame.add(scrollPane);
+        // Crear la tabla
+        JTable table = new JTable(tableModel);
+        JScrollPane scrollPane = new JScrollPane(table);
+        frame.add(scrollPane);
 
-    // Configurar el JFrame y hacerlo visible
-    frame.setVisible(true);
-    
+        // Configurar el JFrame y hacerlo visible
+        frame.setVisible(true);
+
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
@@ -1282,8 +1236,6 @@ public class FormCancion extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

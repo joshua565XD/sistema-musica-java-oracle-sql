@@ -52,6 +52,7 @@ public class ListaReproduccion {
 
         return listas;
     }
+// crear una lista
 
     public static void crearLista(int usuarioId, String nombreLista) {
         // Conectar a la base de datos
@@ -67,6 +68,7 @@ public class ListaReproduccion {
             e.printStackTrace(); // Manejar errores de la base de datos
         }
     }
+// agrega una cancion de una lista
 
     public static void agregarCancionALista(int cancionId, int listaId) {
         // Conectar a la base de datos
@@ -122,4 +124,53 @@ public class ListaReproduccion {
         return cancionesConLista;
     }
 
+    
+    public static boolean eliminarLista(int listaId) {
+        Connection conn = null;
+        PreparedStatement deleteCancionesStmt = null;
+        PreparedStatement deleteListaStmt = null;
+
+        try {
+            // Conectar a la base de datos
+            conn = DatabaseConnection.getConnection();
+            conn.setAutoCommit(false); // Iniciar transacción
+
+            // Eliminar todas las canciones de la lista en la tabla lista_canciones
+            String deleteCancionesSQL = "DELETE FROM lista_canciones WHERE lista_id = ?";
+            deleteCancionesStmt = conn.prepareStatement(deleteCancionesSQL);
+            deleteCancionesStmt.setInt(1, listaId);
+            deleteCancionesStmt.executeUpdate();
+
+            // Eliminar la lista en la tabla listas_reproduccion
+            String deleteListaSQL = "DELETE FROM listas_reproduccion WHERE id = ?";
+            deleteListaStmt = conn.prepareStatement(deleteListaSQL);
+            deleteListaStmt.setInt(1, listaId);
+            deleteListaStmt.executeUpdate();
+
+            // Confirmar la transacción
+            conn.commit();
+            return true;
+
+        } catch (SQLException e) {
+            if (conn != null) {
+                try {
+                    conn.rollback(); // Revertir los cambios en caso de error
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            e.printStackTrace();
+            return false;
+
+        } finally {
+            // Cerrar recursos
+            try {
+                if (deleteCancionesStmt != null) deleteCancionesStmt.close();
+                if (deleteListaStmt != null) deleteListaStmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

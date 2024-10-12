@@ -91,6 +91,7 @@ public class Usuario {
     // CRUD Operations
 
  // Crear
+    //registro
     public void guardar() {
         String sql = "INSERT INTO usuarios (nombre, apellido, correo, contrasena, es_administrador) VALUES (?, ?, ?, ?, ?)";
 
@@ -113,6 +114,7 @@ public class Usuario {
 
 
     // Leer (Buscar por correo)
+    // login
     public static Usuario buscarPorCorreo(String correo) {
         String sql = "SELECT * FROM usuarios WHERE correo = ?";
         Usuario usuario = null;

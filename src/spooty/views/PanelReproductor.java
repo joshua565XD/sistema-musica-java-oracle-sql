@@ -25,7 +25,6 @@ public class PanelReproductor extends JPanel {
     private float volumen = 0.5f;
 
     public void play(String filePath) {
-        System.out.println("spooty.views.PanelReproductor.play()");
         stop(); // Detiene la reproducción actual si existe
 
         try {

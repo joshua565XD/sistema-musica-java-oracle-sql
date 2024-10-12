@@ -1,12 +1,6 @@
 package report;
 
 import DBConnection.DatabaseConnection;
-import 
-import com.itextpdf.pdf.PdfDocument;
-import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Paragraph;
-
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
