@@ -40,22 +40,23 @@ import spooty.models.ListaReproduccion;
 import spooty.models.Usuario;
 import spooty.models.UsuarioSesion;
 
-
 /**
  *
  * @author recinos
  */
 public class FormCancion extends javax.swing.JFrame {
+
     private PanelReproductor musica;
-    private ListaReproduccion listaReproduccion = new ListaReproduccion();
-    
+
     /**
      * Creates new form FormCancion
      */
     public FormCancion() {
         initComponents();
         configureDragAndDrop();
-       
+
+        cargarDatosEnTabla();
+
     }
 
     /**
@@ -144,7 +145,7 @@ public class FormCancion extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Titulo", "Artista", "Album", "Duracion", "Ruta"
+                "Lista", "Titulo", "Artista", "Album", "Duracion", "Ruta"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -267,7 +268,7 @@ public class FormCancion extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -305,9 +306,7 @@ public class FormCancion extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jButton11)
-                        .addGap(41, 41, 41)
+                        .addGap(171, 171, 171)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -316,6 +315,10 @@ public class FormCancion extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jButton11)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,49 +329,46 @@ public class FormCancion extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jButton4)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(nombreCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel3)
-                                            .addComponent(artisCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(albumCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel4))
-                                        .addGap(29, 29, 29)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel6)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(25, 25, 25)
-                                                .addComponent(jButton9))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jButton8)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButton7)))))
-                                .addGap(41, 41, 41)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton11)
-                                .addGap(59, 59, 59)))))
+                                    .addComponent(jButton4)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(nombreCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(artisCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(albumCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(25, 25, 25)
+                                        .addComponent(jButton9))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton7)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(13, 13, 13))
         );
 
@@ -379,9 +379,44 @@ public class FormCancion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_artisCancionActionPerformed
 
-    
+    private void cargarDatosEnTabla() {
+        // Obtener el usuario actual
+        Usuario usuarioActual = UsuarioSesion.getUsuarioActual();
+        if (usuarioActual == null) {
+            JOptionPane.showMessageDialog(null, "No hay un usuario logueado.");
+            return;
+        }
+
+        int usuarioId = usuarioActual.getId();  // Obtener el ID del usuario
+
+        // Obtener las canciones de las listas del usuario
+        List<Object[]> cancionesConLista = ListaReproduccion.obtenerCancionesDeListasPorUsuario(usuarioId);
+
+        // Limpiar el modelo de la tabla antes de cargar nuevos datos
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0); // Elimina todas las filas existentes
+
+        // Llenar el modelo de la tabla con los datos obtenidos
+        for (Object[] fila : cancionesConLista) {
+            String nombreLista = (String) fila[0];
+            String titulo = (String) fila[1];
+            String artista = (String) fila[2];
+            String duracion = (String) fila[3];
+            String rutaArchivo = (String) fila[4];
+
+            // Agregar la fila al modelo de la tabla
+            model.addRow(new Object[]{nombreLista, titulo, artista, duracion, rutaArchivo});
+        }
+
+        // Imprimir los datos obtenidos para verificación
+        for (Object[] fila : cancionesConLista) {
+            System.out.println("Lista: " + fila[0] + ", Título: " + fila[1] + ", Artista: " + fila[2]
+                    + ", Duración: " + fila[3] + ", Ruta: " + fila[4]);
+        }
+    }
+
     //arrastrar y soltar en la tabla
-   private void configureDragAndDrop() {
+    private void configureDragAndDrop() {
         TransferHandler handler = new TransferHandler() {
             private int[] rows = null;
 
@@ -434,432 +469,27 @@ public class FormCancion extends javax.swing.JFrame {
         jTable1.setTransferHandler(handler);
         jTable1.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
     }
-    
+
     //Add Button
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-      JFileChooser fileChooser = new JFileChooser();
-    fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("MP3 Files", "mp3"));
-    int returnValue = fileChooser.showOpenDialog(null);
-
-    if (returnValue == JFileChooser.APPROVE_OPTION) {
-        File selectedFile = fileChooser.getSelectedFile();
-        String rutaArchivo = selectedFile.getAbsolutePath();
-
-        String titulo = selectedFile.getName();
-        String artista = artisCancion.getText();
-        String album = albumCancion.getText();
-
-        if (artista.isEmpty() || album.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor, complete la información de artista y álbum.");
-            return;
-        }
-
-        String duracion = "00:00";
-        try {
-            AudioFile audioFile = AudioFileIO.read(selectedFile);
-            Tag tag = audioFile.getTag();
-            if (tag != null) {
-                int duracionSegundos = audioFile.getAudioHeader().getTrackLength();
-                duracion = String.format("%02d:%02d", duracionSegundos / 60, duracionSegundos % 60);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "No se pudieron obtener los datos. Se usarán valores predeterminados.");
-        }
-
-        // Obtener el ID del usuario actual desde UsuarioSesion
-        Usuario usuarioActual = UsuarioSesion.getUsuarioActual();
-        if (usuarioActual == null) {
-            JOptionPane.showMessageDialog(null, "No hay un usuario logueado.");
-            return;
-        }
-        int usuarioId = usuarioActual.getId();  // Obtener el ID del usuario
-
-        // Crear objeto Cancion
-        Cancion nuevaCancion = new Cancion(titulo, artista, album, duracion, rutaArchivo, usuarioId);
-
-        // Guardar la canción en la base de datos
-        nuevaCancion.guardar();
-
-        // Agregar a la tabla
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.addRow(new Object[]{titulo, artista, album, duracion, rutaArchivo});
-        JOptionPane.showMessageDialog(null, "CANCION " + titulo + " AGREGADA");
-    }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-
-    // pausa
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-    try {
-        musica.stop();
-    } catch (Exception e) {
-        // Manejar la excepción aquí
-        System.err.println("Error al detener la reproducción: ");
-    }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
- //tabla general de agregar canciones
-        int selectedRow = jTable1.getSelectedRow();
-    if (selectedRow != -1) {
-        String filePath = (String) jTable1.getValueAt(selectedRow, 4);
-
-        if (filePath != null && !filePath.isEmpty()) {
-            if (musica != null) {
-                musica.stop();  // Detener cualquier reproducción en curso
-            } else {
-                musica = new PanelReproductor();
-            }
-            musica.play(filePath);
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontro la ruta del archivo." + filePath);
-        }
-    } else {
-        JOptionPane.showMessageDialog(this, "Selecciona una canción de la lista.");
-    }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    //Search Button
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-// Obtener el nombre
-String noCan = nombreCancion.getText().trim();
-
-// Verificar si el nombre está vacío
-if (noCan.isEmpty()) {
-    JOptionPane.showMessageDialog(this, "Por favor, ingrese el nombre de la cancion.");
-    return; // Salir del método si el campo está vacío
-}
-
-// Si el nombre no está vacío, proceder con la búsqueda
-DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-boolean encontrada = false;
-
-for (int i = 0; i < model.getRowCount(); i++) {
-    String titulo = (String) model.getValueAt(i, 0); // La primera columna es el título
-    if (titulo.equalsIgnoreCase(noCan)) {
-        // Selecciona la fila encontrada en la tabla
-        jTable1.setRowSelectionInterval(i, i);
-        encontrada = true;
-        JOptionPane.showMessageDialog(this, "CANCION " + titulo +" ENCONTRADA " );
-        break;
-    }
-}
-
-if (!encontrada) {
-    JOptionPane.showMessageDialog(null, "Cancion no existe");
-}
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    //next button
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-   //botin next
-try {
-    int selectedRow = jTable1.getSelectedRow();
-
-    if (selectedRow != -1) {
-        // Calcula la siguiente fila, circular al principio si es necesario
-        int nextRow = (selectedRow + 1) % jTable1.getRowCount();
-        String filePath = (String) jTable1.getValueAt(nextRow, 4);
-
-        if (filePath != null && !filePath.isEmpty()) {
-            if (musica != null) {
-                musica.stop(); // Detener cualquier reproducción en curso
-            } else {
-                musica = new PanelReproductor();
-            }
-            musica.play(filePath);
-            jTable1.setRowSelectionInterval(nextRow, nextRow);
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontró la ruta del archivo.");
-        }
-    } else {
-        JOptionPane.showMessageDialog(this, "Selecciona una canción de la lista.");
-    }
-} catch (Exception e) {
-    // Manejar cualquier excepción que pueda ocurrir
-    JOptionPane.showMessageDialog(this, "Ocurrió un error al intentar reproducir la siguiente canción: ");
-}
-
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    //back button
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-    // botón atrás
-try {
-    int selectedRow = jTable1.getSelectedRow();
-
-    if (selectedRow != -1) {
-        int prevRow = (selectedRow - 1 + jTable1.getRowCount()) % jTable1.getRowCount(); // Circular hacia el final
-        String filePath = (String) jTable1.getValueAt(prevRow, 4);
-
-        if (filePath != null && !filePath.isEmpty()) {
-            if (musica != null) {
-                musica.stop(); // Detener cualquier reproducción en curso
-            } else {
-                musica = new PanelReproductor();
-            }
-            musica.play(filePath);
-            jTable1.setRowSelectionInterval(prevRow, prevRow);
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontró la ruta del archivo.");
-        }
-    } else {
-        JOptionPane.showMessageDialog(this, "Selecciona una canción de la lista.");
-    }
-} catch (Exception e) {
-    // Manejar cualquier excepción que pueda ocurrir
-    JOptionPane.showMessageDialog(this, "Ocurrió un error al intentar reproducir la canción anterior: ");
-    e.printStackTrace(); // Imprime el stack trace para depuración
-}
-
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    //Delete button
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-// delete
-try {
-    int selectedRow = jTable1.getSelectedRow();
-
-    // Verificar si hay una fila seleccionada
-    if (selectedRow != -1) {
-        // Obtener el título de la canción seleccionada
-        String titulo = (String) jTable1.getValueAt(selectedRow, 0);
-
-        // Confirmar la eliminación
-        int confirmacion = JOptionPane.showConfirmDialog(
-            this,
-            "¿Estás seguro de que quieres eliminar la canción \"" + titulo + "\"?",
-            "Confirmación de eliminación",
-            JOptionPane.YES_NO_OPTION
-        );
-
-        if (confirmacion == JOptionPane.YES_OPTION) {
-            // Eliminar la canción de la tabla
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.removeRow(selectedRow);
-            JOptionPane.showMessageDialog(null, titulo + " Eliminada de la lista.");
-
-            // Eliminar la canción de la lista de reproducción
-            Cancion cancionAEliminar = null;
-            for (Cancion cancion : listaReproduccion.getPlaylist()) {
-                if (cancion.getTitulo().equals(titulo)) {
-                    cancionAEliminar = cancion;
-                    break;
-                }
-            }
-
-            if (cancionAEliminar != null) {
-                listaReproduccion.eliminarCancion(listaReproduccion.getPlaylist().indexOf(cancionAEliminar));
-            }
-        }
-    } else {
-        // No se ha seleccionado ninguna fila
-        JOptionPane.showMessageDialog(null, "Selecciona una canción de la lista para eliminar.");
-    }
-} catch (Exception e) {
-    // Manejar cualquier excepción que pueda ocurrir
-    JOptionPane.showMessageDialog(this, "Ocurrió un error al intentar eliminar la cancion ");
-}
-
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:private void editarCancion() {
-    int selectedRow = jTable1.getSelectedRow();
-
-    // Verificar si hay una fila seleccionada
-    if (selectedRow != -1) {
-        // Obtener los datos actuales de la fila seleccionada
-        String tituloActual = (String) jTable1.getValueAt(selectedRow, 0);
-        String artistaActual = (String) jTable1.getValueAt(selectedRow, 1);
-        String albumActual = (String) jTable1.getValueAt(selectedRow, 2);
-        String duracionActual = (String) jTable1.getValueAt(selectedRow, 3);
-        String rutaArchivoActual = (String) jTable1.getValueAt(selectedRow, 4);
-
-        // Mostrar un cuadro de diálogo para editar los datos
-        JTextField txtTitulo = new JTextField(tituloActual);
-        JTextField txtArtista = new JTextField(artistaActual);
-        JTextField txtAlbum = new JTextField(albumActual);
-        JTextField txtDuracion = new JTextField(duracionActual);
-
-        JPanel panel = new JPanel(new GridLayout(0, 1));
-        panel.add(new JLabel("Título:"));
-        panel.add(txtTitulo);
-        panel.add(new JLabel("Artista:"));
-        panel.add(txtArtista);
-        panel.add(new JLabel("Álbum:"));
-        panel.add(txtAlbum);
-        panel.add(new JLabel("Duración:"));
-        panel.add(txtDuracion);
-
-        int result = JOptionPane.showConfirmDialog(this, panel, "Editar Canción", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-
-        if (result == JOptionPane.OK_OPTION) {
-            // Obtener los nuevos datos
-            String nuevoTitulo = txtTitulo.getText();
-            String nuevoArtista = txtArtista.getText();
-            String nuevoAlbum = txtAlbum.getText();
-            String nuevaDuracion = txtDuracion.getText();
-
-            // Actualizar la tabla
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.setValueAt(nuevoTitulo, selectedRow, 0);
-            model.setValueAt(nuevoArtista, selectedRow, 1);
-            model.setValueAt(nuevoAlbum, selectedRow, 2);
-            model.setValueAt(nuevaDuracion, selectedRow, 3);
-
-            // Actualizar el ArrayList
-            String rutaArchivo = (String) jTable1.getValueAt(selectedRow, 4); // La ruta del archivo no cambia
-            Cancion cancionAEditar = listaReproduccion.getPlaylist().get(selectedRow);
-            cancionAEditar.setTitulo(nuevoTitulo);
-            cancionAEditar.setArtista(nuevoArtista);
-            cancionAEditar.setAlbum(nuevoAlbum);
-            cancionAEditar.setDuracion(nuevaDuracion);
-        }
-    } else {
-        // No se ha seleccionado ninguna fila
-        JOptionPane.showMessageDialog(this, "Selecciona una canción de la lista para editar.");
-    
-}
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    
-    //exportar
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-JFileChooser fileChooser = new JFileChooser();
-    fileChooser.setDialogTitle("Guardar archivo CSV");
-    int userSelection = fileChooser.showSaveDialog(this);
-    
-    if (userSelection == JFileChooser.APPROVE_OPTION) {
-        File fileToSave = fileChooser.getSelectedFile();
-        
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileToSave))) {
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            int columnCount = model.getColumnCount();
-            
-            // Escribir la cabecera del archivo CSV
-            for (int i = 0; i < columnCount; i++) {
-                writer.write(model.getColumnName(i));
-                if (i < columnCount - 1) {
-                    writer.write(",");
-                }
-            }
-            writer.newLine();
-            
-            // Escribir los datos de las filas
-            for (int i = 0; i < model.getRowCount(); i++) {
-                for (int j = 0; j < columnCount; j++) {
-                    writer.write(String.valueOf(model.getValueAt(i, j)));
-                    if (j < columnCount - 1) {
-                        writer.write(",");
-                    }
-                }
-                writer.newLine();
-            }
-            
-            JOptionPane.showMessageDialog(this, "Lista de reproducción exportada exitosamente.");
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error al guardar el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    
-    //Carga de datos
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-JFileChooser fileChooser = new JFileChooser();
-    fileChooser.setDialogTitle("Abrir archivo CSV");
-    int userSelection = fileChooser.showOpenDialog(this);
-
-    if (userSelection == JFileChooser.APPROVE_OPTION) {
-        File fileToOpen = fileChooser.getSelectedFile();
-        
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileToOpen))) {
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.setRowCount(0); // Limpiar la tabla antes de cargar los nuevos datos
-
-            String line;
-            boolean isFirstLine = true;
-            String[] columnNames = null;
-
-            while ((line = reader.readLine()) != null) {
-                String[] values = line.split(","); // Asumimos que el archivo CSV usa comas como delimitadores
-
-                if (isFirstLine) {
-                    // Configurar las cabeceras de la tabla
-                    columnNames = values;
-                    model.setColumnIdentifiers(columnNames);
-                    isFirstLine = false;
-                } else {
-                    // Añadir los datos de las filas
-                    model.addRow(values);
-                }
-            }
-
-            if (columnNames == null) {
-                JOptionPane.showMessageDialog(this, "El archivo CSV está vacío o no tiene cabeceras.", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "Archivo CSV cargado exitosamente.");
-            }
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error al cargar el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    }//GEN-LAST:event_jButton10ActionPerformed
-
-private void mostrarFormularioAgregar() {
-  // Crear el frame o ventana para el formulario
-    JFrame frame = new JFrame("Agregar Nueva Canción");
-    frame.setSize(400, 300);
-    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    frame.setLayout(new GridLayout(6, 2));
-
-    // Crear los campos del formulario
-    JLabel archivoLabel = new JLabel("Archivo MP3:");
-    JTextField archivoField = new JTextField();
-    archivoField.setEnabled(false);  // Campo bloqueado para el usuario, solo muestra la ruta del archivo
-
-    JButton archivoButton = new JButton("Seleccionar Archivo");
-
-    JLabel tituloLabel = new JLabel("Título:");
-    JTextField tituloField = new JTextField();
-    tituloField.setEnabled(false);  // Inicialmente bloqueado
-
-    JLabel artistaLabel = new JLabel("Artista:");
-    JTextField artistaField = new JTextField();
-    artistaField.setEnabled(false);  // Inicialmente bloqueado
-
-    JLabel albumLabel = new JLabel("Álbum:");
-    JTextField albumField = new JTextField();
-    albumField.setEnabled(false);  // Inicialmente bloqueado
-
-    JLabel duracionLabel = new JLabel("Duración:");
-    JTextField duracionField = new JTextField();
-    duracionField.setEnabled(false);  // Bloqueado permanentemente, se llena automáticamente
-
-    // Acción para el botón de selección de archivo
-    archivoButton.addActionListener(e -> {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("MP3 Files", "mp3"));
         int returnValue = fileChooser.showOpenDialog(null);
 
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-            archivoField.setText(selectedFile.getAbsolutePath());
+            String rutaArchivo = selectedFile.getAbsolutePath();
 
-            // Desbloquear los campos de título, artista y álbum
-            tituloField.setEnabled(true);
-            artistaField.setEnabled(true);
-            albumField.setEnabled(true);
+            String titulo = selectedFile.getName();
+            String artista = artisCancion.getText();
+            String album = albumCancion.getText();
 
-            // Obtener automáticamente el título de la canción del archivo seleccionado
-            tituloField.setText(selectedFile.getName());
+            if (artista.isEmpty() || album.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Por favor, complete la información de artista y álbum.");
+                return;
+            }
 
-            // Intentar obtener la duración del archivo MP3
             String duracion = "00:00";
             try {
                 AudioFile audioFile = AudioFileIO.read(selectedFile);
@@ -868,175 +498,720 @@ private void mostrarFormularioAgregar() {
                     int duracionSegundos = audioFile.getAudioHeader().getTrackLength();
                     duracion = String.format("%02d:%02d", duracionSegundos / 60, duracionSegundos % 60);
                 }
-                duracionField.setText(duracion);  // Actualizar el campo de duración con la duración obtenida
-            } catch (Exception ex) {
-                ex.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
                 JOptionPane.showMessageDialog(null, "No se pudieron obtener los datos. Se usarán valores predeterminados.");
             }
+
+            // Obtener el ID del usuario actual desde UsuarioSesion
+            Usuario usuarioActual = UsuarioSesion.getUsuarioActual();
+            if (usuarioActual == null) {
+                JOptionPane.showMessageDialog(null, "No hay un usuario logueado.");
+                return;
+            }
+            int usuarioId = usuarioActual.getId();  // Obtener el ID del usuario
+
+            // Crear objeto Cancion
+            Cancion nuevaCancion = new Cancion(titulo, artista, album, duracion, rutaArchivo, usuarioId);
+
+            // Guardar la canción en la base de datos
+            nuevaCancion.guardar();
+
+            // Agregar a la tabla
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.addRow(new Object[]{titulo, artista, album, duracion, rutaArchivo});
+            JOptionPane.showMessageDialog(null, "CANCION " + titulo + " AGREGADA");
         }
-    });
 
-    // Botón para guardar la canción
-    JButton saveButton = new JButton("Guardar");
-    saveButton.setEnabled(false);  // Deshabilitado hasta que el archivo sea seleccionado
-    saveButton.addActionListener(e -> {
-        String titulo = tituloField.getText();
-        String artista = artistaField.getText();
-        String album = albumField.getText();
-        String duracion = duracionField.getText();
-        String rutaArchivo = archivoField.getText();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-        // Validar que los campos no estén vacíos
-        if (titulo.isEmpty() || artista.isEmpty() || album.isEmpty() || rutaArchivo.isEmpty()) {
-            JOptionPane.showMessageDialog(frame, "Por favor, complete todos los campos.");
-            return;
+    // pausa
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        try {
+            musica.stop();
+        } catch (Exception e) {
+            // Manejar la excepción aquí
+            System.err.println("Error al detener la reproducción: ");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        //tabla general de agregar canciones
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow != -1) {
+            String filePath = (String) jTable1.getValueAt(selectedRow, 4);
+
+            if (filePath != null && !filePath.isEmpty()) {
+                if (musica != null) {
+                    musica.stop();  // Detener cualquier reproducción en curso
+                } else {
+                    musica = new PanelReproductor();
+                }
+                musica.play(filePath);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontro la ruta del archivo." + filePath);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecciona una canción de la lista.");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    //Search Button
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+// Obtener el nombre
+        String noCan = nombreCancion.getText().trim();
+
+// Verificar si el nombre está vacío
+        if (noCan.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el nombre de la cancion.");
+            return; // Salir del método si el campo está vacío
         }
 
-        // Obtener el ID del usuario actual desde UsuarioSesion
-        Usuario usuarioActual = UsuarioSesion.getUsuarioActual();
-        if (usuarioActual == null) {
-            JOptionPane.showMessageDialog(null, "No hay un usuario logueado.");
-            return;
-        }
-        int usuarioId = usuarioActual.getId();  // Obtener el ID del usuario logueado
-
-        // Crear el objeto Cancion
-        Cancion nuevaCancion = new Cancion(titulo, artista, album, duracion, rutaArchivo, usuarioId);
-
-        // Guardar la canción en la base de datos
-        nuevaCancion.guardar();
-
-        // Mostrar mensaje de confirmación
-        JOptionPane.showMessageDialog(frame, "Canción agregada exitosamente.");
-
-        // Cerrar el formulario
-        frame.dispose();
-
-        // Aquí puedes agregar la canción a la tabla si ya tienes una tabla visible en la interfaz principal
+// Si el nombre no está vacío, proceder con la búsqueda
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.addRow(new Object[]{titulo, artista, album, duracion, rutaArchivo});
-    });
+        boolean encontrada = false;
 
-    // Añadir los componentes al frame
-    frame.add(archivoLabel);
-    frame.add(archivoField);
-    frame.add(archivoButton);
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String titulo = (String) model.getValueAt(i, 0); // La primera columna es el título
+            if (titulo.equalsIgnoreCase(noCan)) {
+                // Selecciona la fila encontrada en la tabla
+                jTable1.setRowSelectionInterval(i, i);
+                encontrada = true;
+                JOptionPane.showMessageDialog(this, "CANCION " + titulo + " ENCONTRADA ");
+                break;
+            }
+        }
 
-    frame.add(tituloLabel);
-    frame.add(tituloField);
+        if (!encontrada) {
+            JOptionPane.showMessageDialog(null, "Cancion no existe");
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
-    frame.add(artistaLabel);
-    frame.add(artistaField);
+    //next button
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        //botin next
+        try {
+            int selectedRow = jTable1.getSelectedRow();
 
-    frame.add(albumLabel);
-    frame.add(albumField);
+            if (selectedRow != -1) {
+                // Calcula la siguiente fila, circular al principio si es necesario
+                int nextRow = (selectedRow + 1) % jTable1.getRowCount();
+                String filePath = (String) jTable1.getValueAt(nextRow, 4);
 
-    frame.add(duracionLabel);
-    frame.add(duracionField);
+                if (filePath != null && !filePath.isEmpty()) {
+                    if (musica != null) {
+                        musica.stop(); // Detener cualquier reproducción en curso
+                    } else {
+                        musica = new PanelReproductor();
+                    }
+                    musica.play(filePath);
+                    jTable1.setRowSelectionInterval(nextRow, nextRow);
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se encontró la ruta del archivo.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Selecciona una canción de la lista.");
+            }
+        } catch (Exception e) {
+            // Manejar cualquier excepción que pueda ocurrir
+            JOptionPane.showMessageDialog(this, "Ocurrió un error al intentar reproducir la siguiente canción: ");
+        }
 
-    // Añadir el botón de guardar
-    frame.add(new JLabel());  // Espacio vacío para alinear
-    frame.add(saveButton);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
-    // Mostrar el formulario
-    frame.setVisible(true);
+    //back button
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // botón atrás
+        try {
+            int selectedRow = jTable1.getSelectedRow();
 
-    // Habilitar el botón "Guardar" después de seleccionar el archivo
-    archivoButton.addActionListener(e -> saveButton.setEnabled(true));
-}
+            if (selectedRow != -1) {
+                int prevRow = (selectedRow - 1 + jTable1.getRowCount()) % jTable1.getRowCount(); // Circular hacia el final
+                String filePath = (String) jTable1.getValueAt(prevRow, 4);
 
-    
+                if (filePath != null && !filePath.isEmpty()) {
+                    if (musica != null) {
+                        musica.stop(); // Detener cualquier reproducción en curso
+                    } else {
+                        musica = new PanelReproductor();
+                    }
+                    musica.play(filePath);
+                    jTable1.setRowSelectionInterval(prevRow, prevRow);
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se encontró la ruta del archivo.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Selecciona una canción de la lista.");
+            }
+        } catch (Exception e) {
+            // Manejar cualquier excepción que pueda ocurrir
+            JOptionPane.showMessageDialog(this, "Ocurrió un error al intentar reproducir la canción anterior: ");
+            e.printStackTrace(); // Imprime el stack trace para depuración
+        }
+
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    //Delete button
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+// delete
+
+
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    //exportar
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar archivo CSV");
+        int userSelection = fileChooser.showSaveDialog(this);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileToSave))) {
+                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                int columnCount = model.getColumnCount();
+
+                // Escribir la cabecera del archivo CSV
+                for (int i = 0; i < columnCount; i++) {
+                    writer.write(model.getColumnName(i));
+                    if (i < columnCount - 1) {
+                        writer.write(",");
+                    }
+                }
+                writer.newLine();
+
+                // Escribir los datos de las filas
+                for (int i = 0; i < model.getRowCount(); i++) {
+                    for (int j = 0; j < columnCount; j++) {
+                        writer.write(String.valueOf(model.getValueAt(i, j)));
+                        if (j < columnCount - 1) {
+                            writer.write(",");
+                        }
+                    }
+                    writer.newLine();
+                }
+
+                JOptionPane.showMessageDialog(this, "Lista de reproducción exportada exitosamente.");
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "Error al guardar el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    //Carga de datos
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Abrir archivo CSV");
+        int userSelection = fileChooser.showOpenDialog(this);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToOpen = fileChooser.getSelectedFile();
+
+            try (BufferedReader reader = new BufferedReader(new FileReader(fileToOpen))) {
+                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                model.setRowCount(0); // Limpiar la tabla antes de cargar los nuevos datos
+
+                String line;
+                boolean isFirstLine = true;
+                String[] columnNames = null;
+
+                while ((line = reader.readLine()) != null) {
+                    String[] values = line.split(","); // Asumimos que el archivo CSV usa comas como delimitadores
+
+                    if (isFirstLine) {
+                        // Configurar las cabeceras de la tabla
+                        columnNames = values;
+                        model.setColumnIdentifiers(columnNames);
+                        isFirstLine = false;
+                    } else {
+                        // Añadir los datos de las filas
+                        model.addRow(values);
+                    }
+                }
+
+                if (columnNames == null) {
+                    JOptionPane.showMessageDialog(this, "El archivo CSV está vacío o no tiene cabeceras.", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Archivo CSV cargado exitosamente.");
+                }
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "Error al cargar el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton10ActionPerformed
+    // agremas un nueva cancion
+    private void mostrarFormularioAgregar(List<Cancion> canciones, DefaultTableModel tableModel) {
+        // Crear el frame o ventana para el formulario
+        JFrame frame = new JFrame("Agregar Nueva Canción");
+        frame.setSize(400, 300);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setLayout(new GridLayout(6, 2));
+
+        // Crear los campos del formulario
+        JLabel archivoLabel = new JLabel("Archivo MP3:");
+        JTextField archivoField = new JTextField();
+        archivoField.setEnabled(false);  // Campo bloqueado para el usuario, solo muestra la ruta del archivo
+
+        JButton archivoButton = new JButton("Seleccionar Archivo");
+
+        JLabel tituloLabel = new JLabel("Título:");
+        JTextField tituloField = new JTextField();
+        tituloField.setEnabled(false);  // Inicialmente bloqueado
+
+        JLabel artistaLabel = new JLabel("Artista:");
+        JTextField artistaField = new JTextField();
+        artistaField.setEnabled(false);  // Inicialmente bloqueado
+
+        JLabel albumLabel = new JLabel("Álbum:");
+        JTextField albumField = new JTextField();
+        albumField.setEnabled(false);  // Inicialmente bloqueado
+
+        JLabel duracionLabel = new JLabel("Duración:");
+        JTextField duracionField = new JTextField();
+        duracionField.setEnabled(false);  // Bloqueado permanentemente, se llena automáticamente
+
+        // Acción para el botón de selección de archivo
+        archivoButton.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("MP3 Files", "mp3"));
+            int returnValue = fileChooser.showOpenDialog(null);
+
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = fileChooser.getSelectedFile();
+                archivoField.setText(selectedFile.getAbsolutePath());
+
+                // Desbloquear los campos de título, artista y álbum
+                tituloField.setEnabled(true);
+                artistaField.setEnabled(true);
+                albumField.setEnabled(true);
+
+                // Obtener automáticamente el título de la canción del archivo seleccionado
+                tituloField.setText(selectedFile.getName());
+
+                // Intentar obtener la duración del archivo MP3
+                String duracion = "00:00";
+                try {
+                    AudioFile audioFile = AudioFileIO.read(selectedFile);
+                    Tag tag = audioFile.getTag();
+                    if (tag != null) {
+                        int duracionSegundos = audioFile.getAudioHeader().getTrackLength();
+                        duracion = String.format("%02d:%02d", duracionSegundos / 60, duracionSegundos % 60);
+                    }
+                    duracionField.setText(duracion);  // Actualizar el campo de duración con la duración obtenida
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "No se pudieron obtener los datos. Se usarán valores predeterminados.");
+                }
+            }
+        });
+
+        // Botón para guardar la canción
+        JButton saveButton = new JButton("Guardar");
+        saveButton.setEnabled(false);  // Deshabilitado hasta que el archivo sea seleccionado
+
+        archivoButton.addActionListener(e -> {
+            // Habilitar el botón "Guardar" después de seleccionar el archivo
+            saveButton.setEnabled(true);
+        });
+
+        saveButton.addActionListener(e -> {
+            String titulo = tituloField.getText();
+            String artista = artistaField.getText();
+            String album = albumField.getText();
+            String duracion = duracionField.getText();
+            String rutaArchivo = archivoField.getText();
+
+            // Validar que los campos no estén vacíos
+            if (titulo.isEmpty() || artista.isEmpty() || album.isEmpty() || rutaArchivo.isEmpty()) {
+                JOptionPane.showMessageDialog(frame, "Por favor, complete todos los campos.");
+                return;
+            }
+
+            // Obtener el ID del usuario actual desde UsuarioSesion
+            Usuario usuarioActual = UsuarioSesion.getUsuarioActual();
+            if (usuarioActual == null) {
+                JOptionPane.showMessageDialog(null, "No hay un usuario logueado.");
+                return;
+            }
+            int usuarioId = usuarioActual.getId();  // Obtener el ID del usuario logueado
+
+            // Crear el objeto Cancion
+            Cancion nuevaCancion = new Cancion(titulo, artista, album, duracion, rutaArchivo, usuarioId);
+
+            // Guardar la canción en la base de datos
+            nuevaCancion.guardar();
+
+            // Mostrar mensaje de confirmación
+            JOptionPane.showMessageDialog(frame, "Canción agregada exitosamente.");
+
+            // Actualizar la lista de canciones desde la base de datos
+            canciones.clear(); // Limpiar la lista actual
+            canciones.addAll(Cancion.listarCancionesPorUsuario(usuarioId));  // Añadir las canciones actualizadas
+
+            // Limpiar el modelo de la tabla
+            tableModel.setRowCount(0);
+
+            // Volver a cargar todas las canciones en la tabla
+            for (Cancion cancion : canciones) {
+                tableModel.addRow(new Object[]{
+                    cancion.getId(),
+                    cancion.getTitulo(),
+                    cancion.getArtista(),
+                    cancion.getAlbum(),
+                    cancion.getDuracion(),
+                    cancion.getRutaArchivo()
+                });
+            }
+
+            // Cerrar el formulario
+            frame.dispose();
+        });
+
+        // Añadir los componentes al frame
+        frame.add(archivoLabel);
+        frame.add(archivoField);
+        frame.add(archivoButton);
+
+        frame.add(tituloLabel);
+        frame.add(tituloField);
+
+        frame.add(artistaLabel);
+        frame.add(artistaField);
+
+        frame.add(albumLabel);
+        frame.add(albumField);
+
+        frame.add(duracionLabel);
+        frame.add(duracionField);
+
+        // Añadir el botón de guardar
+        frame.add(new JLabel());  // Espacio vacío para alinear
+        frame.add(saveButton);
+
+        // Mostrar el formulario
+        frame.setVisible(true);
+    }
+
+    // modificamos una cancion
+    private void mostrarFormularioModificar(Cancion cancionSeleccionada, JTable table) {
+        // Crear el frame o ventana para el formulario
+        JFrame frame = new JFrame("Modificar Canción");
+        frame.setSize(400, 300);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setLayout(new GridLayout(6, 2));
+
+        // Crear los campos del formulario y llenarlos con los datos de la canción seleccionada
+        JLabel tituloLabel = new JLabel("Título:");
+        JTextField tituloField = new JTextField(cancionSeleccionada.getTitulo()); // Cargar título
+        tituloField.setEnabled(true);  // Permitimos que el título sea editable
+
+        JLabel artistaLabel = new JLabel("Artista:");
+        JTextField artistaField = new JTextField(cancionSeleccionada.getArtista()); // Cargar artista
+        artistaField.setEnabled(true);  // Permitimos que el artista sea editable
+
+        JLabel albumLabel = new JLabel("Álbum:");
+        JTextField albumField = new JTextField(cancionSeleccionada.getAlbum()); // Cargar álbum
+        albumField.setEnabled(true);  // Permitimos que el álbum sea editable
+
+        JLabel duracionLabel = new JLabel("Duración:");
+        JTextField duracionField = new JTextField(cancionSeleccionada.getDuracion()); // Cargar duración
+        duracionField.setEnabled(false);  // Bloqueado, no editable
+
+        // Botón para guardar la modificación
+        JButton saveButton = new JButton("Guardar Cambios");
+        saveButton.addActionListener(e -> {
+            String titulo = tituloField.getText();
+            String artista = artistaField.getText();
+            String album = albumField.getText();
+
+            // Validar que los campos no estén vacíos
+            if (titulo.isEmpty() || artista.isEmpty() || album.isEmpty()) {
+                JOptionPane.showMessageDialog(frame, "Por favor, complete todos los campos.");
+                return;
+            }
+
+            // Actualizar los datos de la canción
+            cancionSeleccionada.setTitulo(titulo);
+            cancionSeleccionada.setArtista(artista);
+            cancionSeleccionada.setAlbum(album);
+
+            // Llamar al método actualizar para guardar los cambios en la base de datos
+            cancionSeleccionada.actualizar();
+
+            // Obtener la fila seleccionada en la tabla
+            int selectedRow = table.getSelectedRow(); // Obtener la fila seleccionada
+
+            if (selectedRow >= 0) { // Asegurarse de que hay una fila seleccionada
+                table.setValueAt(titulo, selectedRow, 1); // Actualizar título
+                table.setValueAt(artista, selectedRow, 2); // Actualizar artista
+                table.setValueAt(album, selectedRow, 3); // Actualizar álbum
+                // No se actualiza duración ya que está bloqueada
+
+                // Mostrar mensaje de confirmación
+                JOptionPane.showMessageDialog(frame, "Canción actualizada exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(frame, "Por favor selecciona una canción para modificar.");
+            }
+
+            // Cerrar el formulario
+            frame.dispose();
+        });
+
+        // Añadir los componentes al frame
+        frame.add(tituloLabel);
+        frame.add(tituloField);
+
+        frame.add(artistaLabel);
+        frame.add(artistaField);
+
+        frame.add(albumLabel);
+        frame.add(albumField);
+
+        frame.add(duracionLabel);
+        frame.add(duracionField);
+
+        // Añadir el botón de guardar
+        frame.add(new JLabel());  // Espacio vacío para alinear
+        frame.add(saveButton);
+
+        // Mostrar el formulario
+        frame.setVisible(true);
+    }
+
+    private void mostrarFormularioAgregarALista(Cancion cancionSeleccionada, Usuario usuarioActual) {
+        // Crear el frame o ventana para el formulario de agregar a lista
+        JFrame frame = new JFrame("Agregar Canción a la Lista");
+        frame.setSize(600, 400);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
+
+        // Panel principal
+        JPanel mainPanel = new JPanel(new BorderLayout());
+
+        // Panel para crear una lista de reproducción
+        JPanel crearListaPanel = new JPanel(new GridLayout(2, 2));
+        JLabel nuevaListaLabel = new JLabel("Nombre de nueva lista:");
+        JTextField nuevaListaField = new JTextField(); // Campo para el nombre de la nueva lista
+        JButton crearListaButton = new JButton("Crear Lista");
+        crearListaPanel.add(nuevaListaLabel);
+        crearListaPanel.add(nuevaListaField);
+        crearListaPanel.add(new JLabel()); // Espacio vacío
+        crearListaPanel.add(crearListaButton);
+
+        // Panel para las listas de reproducción
+        JPanel listaPanel = new JPanel(new BorderLayout());
+
+        // Título para la tabla de listas de reproducción
+        JLabel listasLabel = new JLabel("Listas de Reproducción:");
+        listaPanel.add(listasLabel, BorderLayout.NORTH);
+
+        // Obtener las listas de reproducción del usuario logueado
+        List<ListaReproduccion> listas = ListaReproduccion.obtenerListasPorUsuario(usuarioActual.getId());
+
+        // Crear la tabla con las listas de reproducción
+        String[] columnNames = {"ID", "Nombre"};
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+
+        // Llenar la tabla con las listas de reproducción del usuario
+        for (ListaReproduccion lista : listas) {
+            Object[] row = {lista.getId(), lista.getNombre()};
+            tableModel.addRow(row);
+        }
+
+        JTable table = new JTable(tableModel);
+        JScrollPane scrollPane = new JScrollPane(table);
+        listaPanel.add(scrollPane, BorderLayout.CENTER);
+
+        // Botón para agregar la canción a la lista seleccionada
+        JButton agregarButton = new JButton("Agregar a la Lista");
+        agregarButton.addActionListener(e -> {
+            // Obtener la fila seleccionada
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow >= 0) {
+                int listaId = (int) table.getValueAt(selectedRow, 0); // Obtener ID de la lista seleccionada
+
+                System.out.println(cancionSeleccionada.getId());
+                System.out.println(listaId);
+
+                // Agregar la canción a la lista de reproducción
+                ListaReproduccion.agregarCancionALista(cancionSeleccionada.getId(), listaId);
+
+                // Mostrar mensaje de éxito
+                JOptionPane.showMessageDialog(frame, "Canción agregada a la lista exitosamente.");
+                frame.dispose(); // Cierra el frame después de agregar
+            } else {
+                JOptionPane.showMessageDialog(frame, "Por favor selecciona una lista.");
+            }
+        });
+
+        // Acción para crear una nueva lista
+        crearListaButton.addActionListener(e -> {
+            String nombreNuevaLista = nuevaListaField.getText().trim();
+            if (!nombreNuevaLista.isEmpty()) {
+                try {
+                    // Crear la nueva lista de reproducción en la base de datos
+                    ListaReproduccion.crearLista(usuarioActual.getId(), nombreNuevaLista);
+
+                    // Volver a consultar las listas de reproducción después de la creación
+                    List<ListaReproduccion> listasActualizadas = ListaReproduccion.obtenerListasPorUsuario(usuarioActual.getId());
+
+                    // Limpiar el modelo de la tabla
+                    tableModel.setRowCount(0); // Limpiar filas existentes
+
+                    // Llenar la tabla con las listas de reproducción actualizadas
+                    for (ListaReproduccion lista : listasActualizadas) {
+                        Object[] row = {lista.getId(), lista.getNombre()};
+                        tableModel.addRow(row);
+                    }
+
+                    // Mostrar un mensaje de éxito
+                    JOptionPane.showMessageDialog(frame, "Lista creada exitosamente.");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(frame, "Error al crear la lista: " + ex.getMessage());
+                }
+            } else {
+                JOptionPane.showMessageDialog(frame, "El nombre de la lista no puede estar vacío.");
+            }
+        });
+
+        // Panel para los botones de acciones
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(agregarButton); // Botón de agregar canción a la lista
+
+        // Añadir los paneles a la ventana principal
+        mainPanel.add(listaPanel, BorderLayout.CENTER);  // Añadir la tabla de listas
+        mainPanel.add(crearListaPanel, BorderLayout.SOUTH); // Añadir el panel de crear lista
+
+        frame.add(mainPanel, BorderLayout.CENTER);
+        frame.add(buttonPanel, BorderLayout.SOUTH);
+
+        // Mostrar la ventana
+        frame.setVisible(true);
+    }
+
     // vista de canciones y agregar
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-     
-        
-          // Crear el frame o ventana principal para mostrar las canciones
-    JFrame frame = new JFrame("Gestión de Canciones");
-    frame.setSize(600, 400);
-    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    frame.setLayout(new BorderLayout());
 
-    // Obtener el ID del usuario logueado
-    
+        // Crear el frame o ventana principal para mostrar las canciones
+        JFrame frame = new JFrame("Gestión de Canciones");
+        frame.setSize(720, 400);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
+
+        // Obtener el ID del usuario logueado
         Usuario usuarioActual = UsuarioSesion.getUsuarioActual();
         if (usuarioActual == null) {
             JOptionPane.showMessageDialog(null, "No hay un usuario logueado.");
             return;
         }
         int usuarioId = usuarioActual.getId();  // Obtener el ID del usuario
-    
 
-    // Obtener la lista de canciones del usuario logueado desde la base de datos
-    List<Cancion> canciones = Cancion.listarCancionesPorUsuario(usuarioId);
+        // Obtener la lista de canciones del usuario logueado desde la base de datos
+        List<Cancion> canciones = Cancion.listarCancionesPorUsuario(usuarioId);
 
-    // Crear los datos para la tabla
-    String[] columnNames = {"ID", "Título", "Artista", "Álbum", "Duración"};
-    String[][] data = new String[canciones.size()][5];
-    
-    for (int i = 0; i < canciones.size(); i++) {
-        Cancion c = canciones.get(i);
-        data[i][0] = String.valueOf(c.getId());
-        data[i][1] = c.getTitulo();
-        data[i][2] = c.getArtista();
-        data[i][3] = c.getAlbum();
-        data[i][4] = c.getDuracion();
-    }
+        // Crear los datos para la tabla
+        String[] columnNames = {"ID", "Título", "Artista", "Álbum", "Duración"};
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
-    // Crear la tabla para mostrar las canciones
-    JTable table = new JTable(data, columnNames);
-    JScrollPane scrollPane = new JScrollPane(table);
-    frame.add(scrollPane, BorderLayout.CENTER);
-
-    // Crear el panel para los botones
-    JPanel buttonPanel = new JPanel();
-
-    // Botón para agregar una canción
-    JButton addButton = new JButton("Agregar Canción");
-    addButton.addActionListener(e -> {
-        // Aquí abres un formulario para agregar una canción
-         mostrarFormularioAgregar();
-    });
-    buttonPanel.add(addButton);
-
-    // Botón para modificar una canción
-    JButton modifyButton = new JButton("Modificar Canción");
-    modifyButton.addActionListener(e -> {
-        // Obtener la fila seleccionada
-        int selectedRow = table.getSelectedRow();
-        if (selectedRow >= 0) {
-            String titulo = (String) table.getValueAt(selectedRow, 1);
-            // Aquí abres un formulario para modificar la canción seleccionada
-            // mostrarFormularioModificar(titulo);
-        } else {
-            JOptionPane.showMessageDialog(frame, "Por favor selecciona una canción para modificar.");
+        // Llenar la tabla con las canciones del usuario
+        for (Cancion c : canciones) {
+            Object[] row = {c.getId(), c.getTitulo(), c.getArtista(), c.getAlbum(), c.getDuracion()};
+            tableModel.addRow(row);
         }
-    });
-    buttonPanel.add(modifyButton);
 
-    // Botón para eliminar una canción
-    JButton deleteButton = new JButton("Eliminar Canción");
-    deleteButton.addActionListener(e -> {
-        int selectedRow = table.getSelectedRow();
-        if (selectedRow >= 0) {
-            String titulo = (String) table.getValueAt(selectedRow, 1);
-            Cancion.eliminar(titulo); // Llamar al método para eliminar la canción
-            JOptionPane.showMessageDialog(frame, "Canción eliminada exitosamente.");
-            // Aquí podrías actualizar la tabla para reflejar la eliminación
-        } else {
-            JOptionPane.showMessageDialog(frame, "Por favor selecciona una canción para eliminar.");
-        }
-    });
-    buttonPanel.add(deleteButton);
+        // Crear la tabla para mostrar las canciones
+        JTable table = new JTable(tableModel);
+        JScrollPane scrollPane = new JScrollPane(table);
+        frame.add(scrollPane, BorderLayout.CENTER);
 
-    // Añadir el panel de botones al frame
-    frame.add(buttonPanel, BorderLayout.SOUTH);
+        // Crear el panel para los botones
+        JPanel buttonPanel = new JPanel();
 
-    // Mostrar la ventana
-    frame.setVisible(true);
-        
+        // Botón para agregar una canción
+        JButton addButton = new JButton("Agregar Canción");
+        addButton.addActionListener(e -> {
+            // Llamar a la función para agregar canción, pasando la referencia a la tabla y la lista
+            mostrarFormularioAgregar(canciones, tableModel);
+        });
+        buttonPanel.add(addButton);
+
+        // Botón para modificar una canción
+        JButton modifyButton = new JButton("Modificar Canción");
+        modifyButton.addActionListener(e -> {
+            // Obtener la fila seleccionada
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow >= 0) {
+                int cancionId = (int) table.getValueAt(selectedRow, 0); // Obtener ID de la canción
+                Cancion cancionSeleccionada = Cancion.obtenerPorId(cancionId); // Recuperar la canción por ID
+                if (cancionSeleccionada != null) { // Verificar que se encontró la canción
+                    mostrarFormularioModificar(cancionSeleccionada, table); // Pasar la tabla en lugar del modelo
+                } else {
+                    JOptionPane.showMessageDialog(frame, "No se pudo encontrar la canción seleccionada.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(frame, "Por favor selecciona una canción para modificar.");
+            }
+        });
+
+        buttonPanel.add(modifyButton);
+
+        // Botón para eliminar una canción
+        JButton deleteButton = new JButton("Eliminar Canción");
+        deleteButton.addActionListener(e -> {
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow >= 0) {
+                // Obtener el ID de la canción seleccionada
+                int cancionId = (int) table.getValueAt(selectedRow, 0);
+
+                // Llamar al método para eliminar la canción de la base de datos
+                Cancion.eliminarPorId(cancionId);
+
+                // Eliminar la canción del modelo de la tabla
+                tableModel.removeRow(selectedRow);
+
+                // Mostrar mensaje de confirmación
+                JOptionPane.showMessageDialog(frame, "Canción eliminada exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(frame, "Por favor selecciona una canción para eliminar.");
+            }
+        });
+
+        buttonPanel.add(deleteButton);
+
+        // Botón para agregar una canción a la lista de reproducción
+        JButton addToPlaylistButton = new JButton("Agregar Canción a la Lista");
+        addToPlaylistButton.addActionListener(e -> {
+            // Obtener la fila seleccionada en la tabla
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow >= 0) {
+                int cancionId = (int) table.getValueAt(selectedRow, 0); // Obtener ID de la canción seleccionada
+                Cancion cancionSeleccionada = Cancion.obtenerPorId(cancionId); // Recuperar la canción por ID
+                if (cancionSeleccionada != null) {
+                    // Llamar a la función para mostrar el formulario y agregar la canción a una lista
+                    mostrarFormularioAgregarALista(cancionSeleccionada, usuarioActual); // Paso de la canción seleccionada
+                } else {
+                    JOptionPane.showMessageDialog(frame, "No se pudo encontrar la canción seleccionada.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(frame, "Por favor selecciona una canción para agregar a la lista.");
+            }
+        });
+
+        buttonPanel.add(addToPlaylistButton);
+
+        // Añadir el panel de botones al frame
+        frame.add(buttonPanel, BorderLayout.SOUTH);
+
+        // Mostrar la ventana
+        frame.setVisible(true);
+
     }//GEN-LAST:event_jButton11ActionPerformed
-    
-    
+
     /**
      * @param args the command line arguments
      */
