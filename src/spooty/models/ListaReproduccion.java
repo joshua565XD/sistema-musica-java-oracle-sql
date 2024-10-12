@@ -90,7 +90,7 @@ public class ListaReproduccion {
 
         try {
             Connection conn = DatabaseConnection.getConnection();
-            String query = "SELECT lr.nombre AS lista_nombre, c.titulo, c.artista, c.duracion, c.ruta_archivo "
+            String query = "SELECT lr.nombre AS lista_nombre, c.titulo, c.artista, c.album, c.duracion, c.ruta_archivo "
                     + "FROM listas_reproduccion lr "
                     + "JOIN lista_canciones lc ON lr.id = lc.lista_id "
                     + "JOIN canciones c ON lc.cancion_id = c.id "
@@ -106,11 +106,12 @@ public class ListaReproduccion {
                 String nombreLista = rs.getString("lista_nombre");
                 String titulo = rs.getString("titulo");
                 String artista = rs.getString("artista");
+                String album = rs.getString("album"); // Obtener el álbum
                 String duracion = rs.getString("duracion"); // Cambiar a String
                 String ruta = rs.getString("ruta_archivo"); // Cambiar a ruta_archivo
 
                 // Agregamos la fila combinada a la lista
-                Object[] fila = {nombreLista, titulo, artista, duracion, ruta};
+                Object[] fila = {nombreLista, titulo, artista, album, duracion, ruta}; // Incluir álbum en la fila
                 cancionesConLista.add(fila);
             }
 
